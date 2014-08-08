@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Coding for GOOD // API Example 2 - Google Maps</title>
+    <link rel="stylesheet" type="text/css" href="http://reset5.googlecode.com/hg/reset.min.css">
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false">
+		</script>
+		<style type ="text/css">
+			html, body { height: 100%; }
+			#target { height: 500px; }
+		</style>
+		
+		<script type="text/javascript">
+		  var myHighSchool = new google.maps.LatLng(42.28695,-71.23132);
+		  var myLegBroken  = new google.maps.LatLng(43.22785,-72.93871);
+		  var goodOysters  = new google.maps.LatLng(46.51071, -63.41681);
+			var usc = new google.maps.LatLng(34.02281,-118.2857822);
+			var MyHighSchoolMarker = null;
+			var myLegBrokenMarker = null;
+			var goodOystersMarker = null;
+			var uscMarker = null;
+			
+			function showMeInfo(map) {
+				var myHighSchoolString = '<p>This is where I went to High School!</p>';
+				var myLegBrokenString = '<p>This is where I broke my leg!:(</p>';
+				var goodOystersString = '<p>Good oysters here!</p>';
+				var uscString = '<p>This is where Machine shop is, where my friends and I play soccer and take classes!</p>';
+				var myHighSchoolInfoWindow = new google.maps.InfoWindow({
+						content: myHighSchoolString
+					});
+				var myLegBrokenInfoWindow = new google.maps.InfoWindow({
+						content: myLegBrokenString 
+					});
+				var goodOystersInfoWindow = new google.maps.InfoWindow({
+						content: goodOystersString
+					});
+				var uscInfoWindow = new google.maps.InfoWindow({
+					content: uscString
+				});
+			
+				google.maps.event.addListener(myHighSchoolMarker, 'click', function(){
+						myHighSchoolInfoWindow.open(map, myHighSchoolMarker);
+					});
+			
+				google.maps.event.addListener(myLegBrokenMarker, 'click', function(){
+						myLegBrokenInfoWindow.open(map, myLegBrokenMarker);
+					});
+			
+				google.maps.event.addListener(goodOystersMarker, 'click', function(){
+						goodOystersInfoWindow.open(map, goodOystersMarker);
+					});
+				
+				google.maps.event.addListener(uscMarker, 'click', function(){
+					uscInfoWindow.open(map, uscMarker);
+					});
+				}
+		
+				function showMeTheMap() {
+					var mapOptions = {
+						zoom: 5,
+						center: myHighSchool,
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+					}
+			
+					var myMap = new google.maps.Map(document.getElementById('target'), mapOptions);
+					
+					myHighSchoolMarker = new google.maps.Marker(
+						{
+							position: myHighSchool,
+							map: myMap,
+							title: 'Needham High School (Needham, Massachusetts)'
+						}
+					);
+			
+					myLegBrokenMarker = new google.maps.Marker(
+						 {
+						   position: myLegBroken,
+						   map: myMap,
+						   title: 'Bromley Mountain (Peru, Vermont)'
+						  }
+						);
+			
+					goodOystersMarker = new google.maps.Marker(
+				   	 {
+				       	 position: goodOysters,
+				       	 map: myMap,
+				       	 title: 'Prince Edward Island'
+				   		}
+						);
+						
+					uscMarker = new google.maps.Marker(
+						{
+							postion: usc,
+							map: myMap,
+							title: 'USC campus'
+						}
+					);
+							
+					showMeInfo(myMap);
+			}
+	</script>
+  </head>
+	
+  <body>
+		<body onload="showMeTheMap();">
+		<div id="target"></div>
+  </body>
+</html>
