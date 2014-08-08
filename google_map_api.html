@@ -12,10 +12,10 @@
 		</style>
 		
 		<script type="text/javascript">
-		  var myHighSchool = new google.maps.LatLng(42.28695,-71.23132);
-		  var myLegBroken  = new google.maps.LatLng(43.22785,-72.93871);
+		  var myHighSchool = new google.maps.LatLng(42.28695, -71.23132);
+		  var myLegBroken  = new google.maps.LatLng(43.22785, -72.93871);
 		  var goodOysters  = new google.maps.LatLng(46.51071, -63.41681);
-			var usc = new google.maps.LatLng(34.02281,-118.2857822);
+			var usc = new google.maps.LatLng(34.02281, -118.2857822);
 			var MyHighSchoolMarker = null;
 			var myLegBrokenMarker = null;
 			var goodOystersMarker = null;
@@ -58,7 +58,7 @@
 		
 				function showMeTheMap() {
 					var mapOptions = {
-						zoom: 5,
+						zoom: 3,
 						center: myHighSchool,
 						mapTypeId: google.maps.MapTypeId.ROADMAP
 					}
@@ -91,17 +91,16 @@
 						
 					uscMarker = new google.maps.Marker(
 						{
-							postion: usc,
+							position: usc,
 							map: myMap,
-							title: 'USC campus'
+							title: 'USC campus (Los Angeles, California)'
 						}
 					);
-							
+					
 					showMeInfo(myMap);
 			}
 	</script>
   </head>
-	
   <body>
 		<body onload="showMeTheMap();">
 		<div id="target"></div>
