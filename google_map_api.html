@@ -12,53 +12,54 @@
 		</style>
 		
 		<script type="text/javascript">
-		  var myHighSchool = new google.maps.LatLng(42.28695, -71.23132);
-		  var myLegBroken  = new google.maps.LatLng(43.22785, -72.93871);
-		  var goodOysters  = new google.maps.LatLng(46.51071, -63.41681);
+		  var myHighSchool = new google.maps.LatLng(34.0195683, -118.3076202);
+			var campingGround = new google.maps.LatLng(35.4899594, -117.6352449);
+			var engineeringCamp = new google.maps.LatLng(38.9178514, -77.0907575);
 			var usc = new google.maps.LatLng(34.02281, -118.2857822);
 			var MyHighSchoolMarker = null;
-			var myLegBrokenMarker = null;
-			var goodOystersMarker = null;
+			var campingGroundMarker = null;
+			var engineeringCampMarker = null;
 			var uscMarker = null;
 			
 			function showMeInfo(map) {
-				var myHighSchoolString = '<p>This is where I went to High School!</p>';
-				var myLegBrokenString = '<p>This is where I broke my leg!:(</p>';
-				var goodOystersString = '<p>Good oysters here!</p>';
+				var myHighSchoolString = '<p>This is where I went to High School...and fractured my elbow</p>';
+				var campingGroundString = '<p>This is where I went camping, the Sequoia National Park.';
+				var engineeringCampString = '<p>I went to an NSLC engineering and leadership camp, made many new friends</p>';
 				var uscString = '<p>This is where Machine shop is, where my friends and I play soccer and take classes!</p>';
+				
 				var myHighSchoolInfoWindow = new google.maps.InfoWindow({
 						content: myHighSchoolString
 					});
-				var myLegBrokenInfoWindow = new google.maps.InfoWindow({
-						content: myLegBrokenString 
-					});
-				var goodOystersInfoWindow = new google.maps.InfoWindow({
-						content: goodOystersString
-					});
+				var campingGroundInfoWindow = new google.maps.InfoWindow({
+						content: campingGroundString
+					}); 
+				var engineeringCampInfoWindow = new google.maps.InfoWindow({
+					content: engineeringCampString
+				}); 
 				var uscInfoWindow = new google.maps.InfoWindow({
-					content: uscString
-				});
+						content: uscString
+					});
 			
 				google.maps.event.addListener(myHighSchoolMarker, 'click', function(){
 						myHighSchoolInfoWindow.open(map, myHighSchoolMarker);
 					});
 			
-				google.maps.event.addListener(myLegBrokenMarker, 'click', function(){
-						myLegBrokenInfoWindow.open(map, myLegBrokenMarker);
-					});
-			
-				google.maps.event.addListener(goodOystersMarker, 'click', function(){
-						goodOystersInfoWindow.open(map, goodOystersMarker);
-					});
+				google.maps.event.addListener(campingGroundMarker, 'click', function(){
+						campingGroundInfoWindow.open(map, campingGroundMarker);
+				});
 				
+				google.maps.event.addListener(engineeringCampMarker, 'click', function(){
+						engineeringCampInfoWindow.open(map, engineeringCampMarker);
+				});
+
 				google.maps.event.addListener(uscMarker, 'click', function(){
-					uscInfoWindow.open(map, uscMarker);
+						uscInfoWindow.open(map, uscMarker);
 					});
 				}
 		
 				function showMeTheMap() {
 					var mapOptions = {
-						zoom: 3,
+						zoom: 5,
 						center: myHighSchool,
 						mapTypeId: google.maps.MapTypeId.ROADMAP
 					}
@@ -66,27 +67,25 @@
 					var myMap = new google.maps.Map(document.getElementById('target'), mapOptions);
 					
 					myHighSchoolMarker = new google.maps.Marker(
-						{
-							position: myHighSchool,
-							map: myMap,
-							title: 'Needham High School (Needham, Massachusetts)'
-						}
-					);
-			
-					myLegBrokenMarker = new google.maps.Marker(
 						 {
-						   position: myLegBroken,
-						   map: myMap,
-						   title: 'Bromley Mountain (Peru, Vermont)'
-						  }
+							 position: myHighSchool,
+							 map: myMap,
+							 title: 'Needham High School (Needham, Massachusetts)'
+							}
 						);
-			
-					goodOystersMarker = new google.maps.Marker(
-				   	 {
-				       	 position: goodOysters,
-				       	 map: myMap,
-				       	 title: 'Prince Edward Island'
-				   		}
+					campingGroundMarker = new google.maps.Marker(
+							{
+								position: campingGround,
+								map: myMap,
+								title: 'Sequoia National Park (Tulare County, California)'
+							}
+						);
+						engineeringCampMarker = new google.maps.Marker(
+							{
+								position: engineeringCamp,
+								map: myMap,
+								title: 'George Washington University (Washington D.C)'
+							}
 						);
 						
 					uscMarker = new google.maps.Marker(
